@@ -5,6 +5,7 @@ import java.util.Scanner;
 // then press Enter. You can now see whitespace characters in your code.
 public class Main {
     static int failCount = 0;
+
     static Scanner scanner = new Scanner(System.in);
 
     public static String name() {
@@ -21,8 +22,12 @@ public class Main {
                 System.out.println("That is not correct please try again.");
             }
         }
+        if (nameTries==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
+        }
         failCount = 5;
-        return null;
+        return "";
 
     }
 
@@ -38,6 +43,10 @@ public class Main {
                 animalTries++;
                 System.out.println("That is not correct please try again.");
             }
+        }
+        if (animalTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
         }
         failCount = 5;
         return "";
@@ -56,6 +65,10 @@ public class Main {
                 System.out.println("That is not correct please try again.");
             }
         }
+        if (sportTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
+        }
         failCount = 5;
         return "";
     }
@@ -73,6 +86,10 @@ public class Main {
                 System.out.println("That is not correct please try again.");
             }
         }
+        if (gameTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
+        }
         failCount = 5;
         return "";
     }
@@ -89,12 +106,19 @@ public class Main {
             System.out.println("To get the phone number of the user, you must guess this person's favourite number's quotient and remainder when divided by 2. For this question, you will get 5 tries instead of 3. ");
             System.out.println("Please enter your guess for the quotient:");
             qxInput = scanner.nextInt();
-            System.out.println("Please enter your guess for the remainder");
+            System.out.println("Please enter your guess for the remainder:");
             rxInput = scanner.nextInt();
-            System.out.println("That is not correct, please try again.");
+            if ((qxInput == qx) && (rxInput == rx)) {
+                return "Well done! This user's phone number is 94017275";
+            }
+            else{
+                numTries++;
+                System.out.println("That is not correct, please try again.");
+            }
         }
-        if ((qxInput == qx) && (rxInput == rx)) {
-            return "Well done! This user's phone number is 94017275";
+        if (numTries ==5){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
         }
         failCount = 5;
         return "";
@@ -108,10 +132,15 @@ public class Main {
             String bloodInput = scanner.next();
             if (bloodInput.equals("O")) {
                 return "Well done! This user's occupation is student";
-            } else {
+            }
+            else {
                 bloodTries++;
                 System.out.println("That is not correct please try again.");
             }
+        }
+        if (bloodTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
         }
         failCount = 5;
         return "";
@@ -129,6 +158,10 @@ public class Main {
                 countriesTries++;
                 System.out.println("That is not correct please try again.");
             }
+        }
+        if (countriesTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
         }
         failCount = 5;
         return "";
@@ -148,6 +181,10 @@ public class Main {
                 System.out.println("That is not correct please try again.");
             }
         }
+        if (ethTries ==3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
+        }
         failCount = 5;
         return "";
 
@@ -165,6 +202,10 @@ public class Main {
                 petTries++;
                 System.out.println("That is not correct please try again.");
             }
+        }
+        if (petTries == 3){
+            System.out.println("GAME OVER, thank you for playing.");
+            System.exit(0);
         }
         failCount = 5;
         return "";
@@ -184,65 +225,76 @@ public class Main {
         int failCount = 0;
         while ((commandCount < 10) && (failCount < 5)) {
             System.out.println("Please enter your command:");
-            String command = scanner.next();
-            if ((command.equals("name")) || (command.equals("Name") || (command.equals("First name")))){
+            String command = scanner.nextLine();
+            if ((command.equals("name")) || (command.equals("Name")) || (command.equals("First name"))) {
                 String name = name();
-                if (name!= null){
-                    System.out.println(name);
-                }
-                else{
-                    System.out.println(" ");
-                }
+                System.out.println(name);
                 commandCount++;
                 continue;
             }
             if ((command.equals("gender")) || (command.equals("sex"))) {
                 String sex = sex();
+                System.out.println(sex);
                 commandCount++;
                 continue;
             }
             if ((command.equals("age")) || (command.equals("Age"))) {
                 String age = age();
+                System.out.println(age);
                 commandCount++;
                 continue;
             }
-            if ((command.equals("email")) || (command.equals("Email"))){
+            if ((command.equals("email")) || (command.equals("Email"))) {
                 String email = email();
+                System.out.println(email);
                 commandCount++;
                 continue;
             }
-            if ((command.equals("phone number")) || (command.equals("Phone Number")) || (command.equals("Phone number")) || (command.equals("phone Number"))){
+            if ((command.equals("phone number")) || (command.equals("Phone Number")) || (command.equals("Phone number")) || (command.equals("phone Number"))) {
                 String phoneNum = phoneNum();
+                System.out.println(phoneNum);
                 commandCount++;
                 continue;
             }
             if ((command.equals("occupation")) || (command.equals("Occupation")) || (command.equals("job")) || (command.equals("Job"))) {
-                String job = occupation();
+                String occupation = occupation();
+                System.out.println(occupation);
                 commandCount++;
                 continue;
             }
             if ((command.equals("credit card")) || (command.equals("Credit Card")) || (command.equals("Credit card"))) {
                 String cc = creditCard();
+                System.out.println(cc);
                 commandCount++;
+                continue;
             }
             if ((command.equals("ethnicity")) || (command.equals("Ethnicity")) || (command.equals("race")) || (command.equals("Race")) || (command.equals("Nationality")) || (command.equals("nationality"))) {
                 String eth = ethnicity();
+                System.out.println(eth);
                 commandCount++;
                 continue;
             }
 
-            if ((command.equals("location")) || (command.equals("Location")) || (command.equals("Address")) || (command.equals("address"))){
+            if ((command.equals("location")) || (command.equals("Location")) || (command.equals("Address")) || (command.equals("address"))) {
                 String location = location();
+                System.out.println(location);
                 commandCount++;
                 continue;
             }
             failCount++;
             System.out.println("That was not correct, please try again.");
         }
-        if (commandCount == 10) {
-            System.out.println("Congratulations! You guessed all the commands and answered the questions correctly! You win!");
-        }
-        System.out.println("You entered 5 wrong commands, or you answered the questions wrongly. GAME OVER.");
+            if (failCount ==5){
+                System.out.println("You entered 5 wrong commands, or you answered the questions wrongly. GAME OVER.");
+                System.exit(0);
+            }
+            if (commandCount == 9) {
+                System.out.println("Congratulations! You guessed all the commands and answered the questions correctly! You win!");
+                System.exit(0);
+            }
+            System.out.println("You did not find all the commands. GAME OVER.");
+
+
 
 
     }
